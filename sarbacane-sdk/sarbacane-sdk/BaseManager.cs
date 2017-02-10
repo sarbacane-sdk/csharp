@@ -29,7 +29,7 @@ namespace sarbacane_sdk
 
             MailMessage mm = new MailMessage();
             mm.From = new MailAddress(email.getMailFrom(), email.getMailFromName());
-            mm.Headers.Add("X-SARBACANE-SDK", "1.0");
+            mm.Headers.Add("X-SARBACANE-SDK", "1.0.4.5");
             mm.Subject = (email.getSubject());
             mm.BodyEncoding = UTF8Encoding.UTF8;
             mm.DeliveryNotificationOptions = DeliveryNotificationOptions.OnFailure;
