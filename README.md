@@ -1,4 +1,4 @@
-### Sarbacane SDK JAVA - Send e-mail and text messages (sms)
+### Sarbacane SDK C# - Send e-mail and text messages (sms)
 
 
 * Install from Nuget console manager
@@ -62,7 +62,6 @@ AuthenticationManager.setSmsApikey("da3f2a93592ad9f43fb38977e8f64d76");
     email.setRecipients(recipientsList);
     MessagesManager.sendEmailMessage(email);
 ```
-
 
 #### Send SMS
 
