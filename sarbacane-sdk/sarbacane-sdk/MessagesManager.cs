@@ -9,12 +9,12 @@ namespace sarbacane_sdk
     public class MessagesManager : AuthenticationManager
     {
 
-        public static void sendEmail(SBEmailMessage email)
+        public static void sendEmailMessage(SBEmailMessage email)
         {
             AuthenticationManager.ensureEmailTokens();
-            if ((!isSet(email.getMailFrom())) || (!isSet(email.getRecipients().ToString())) || !(isSet(email.getSubject())) || (!isSet(email.getMessage())))
+            if ((!isSet(email.getMailFrom())) || (!isSet(email.getMailFromName())) || (!isSet(email.getRecipients().ToString())) || !(isSet(email.getSubject())) || (!isSet(email.getMessage())))
             {
-                throw new SystemException("Error: missing params. sendEmail(mailFrom, rcptTo, subject, message");
+                throw new SystemException("Error: missing params. sendEmail(mailFrom, mailFromname, recipients, subject, message");
             }
             else
             {
@@ -22,7 +22,7 @@ namespace sarbacane_sdk
             }
         }
 
-        public static String messageSend(SBSmsMessage msg)
+        public static String sendSmsMessage(SBSmsMessage msg)
         {
             AuthenticationManager.ensureSmsTokens();
             if (!isSet(msg.getType()))

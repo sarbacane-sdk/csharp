@@ -28,7 +28,7 @@ namespace sarbacane_sdk
             client.Credentials = new System.Net.NetworkCredential(AuthenticationManager.getEmailUser(), AuthenticationManager.getEmailApikey());
 
             MailMessage mm = new MailMessage();
-            mm.From = new MailAddress(email.getMailFrom());
+            mm.From = new MailAddress(email.getMailFrom(), email.getMailFromName());
             mm.Headers.Add("X-SARBACANE-SDK", "1.0");
             mm.Subject = (email.getSubject());
             mm.BodyEncoding = UTF8Encoding.UTF8;

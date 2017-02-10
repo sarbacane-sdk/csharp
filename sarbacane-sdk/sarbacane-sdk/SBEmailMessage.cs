@@ -3,13 +3,14 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
+
 
 namespace sarbacane_sdk
 {
     public class SBEmailMessage :BaseManager
     {
         private String mailFrom;
+        private String mailFromName;
         private String subject;
         private String message;
 
@@ -39,6 +40,16 @@ namespace sarbacane_sdk
         public void setMailFrom(String mailFrom)
         {
             this.mailFrom = mailFrom;
+        }
+
+        public String getMailFromName()
+        {
+            return mailFromName;
+        }
+
+        public void setMailFromName(String mailFromName)
+        {
+            this.mailFromName = mailFromName;
         }
 
 
