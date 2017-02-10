@@ -57,8 +57,8 @@ AuthenticationManager.setSmsApikey("da3f2a93592ad9f43fb38977e8f64d76");
     email.setSubject("Message sent by Sarbacane SDK");
     email.setMessage("Here is the content of the message");
     ArrayList recipientsList = new ArrayList();
-    recipientsList.Add("clement.beauvois@primotexto.com");
-    recipientsList.Add("clement.beauvois@sarbacane.com");
+    recipientsList.Add("address1@domain.com");
+    recipientsList.Add("address2@domain.com");
     email.setRecipients(recipientsList);
     MessagesManager.sendEmailMessage(email);
 ```
