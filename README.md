@@ -1,8 +1,7 @@
 ### Sarbacane SDK JAVA - Send e-mail and text messages (sms)
 
 
-* Load artefact from pom.xml
-* Download JAR
+* Install from Nuget console manager
 * Download sources
 * Authentication
 * Buy credits
@@ -10,26 +9,19 @@
 * Send SMS
 * Webhooks
 
-#### pom.xml
+#### Nuget
+
+[Install from Nuget console manager](https://www.nuget.org/packages/Sarbacane-Sdk)
 
 ```
-<dependency>
-  <groupId>com.sarbacane</groupId>
-  <artifactId>sarbacane-sdk</artifactId>
-  <version>1.0.3</version>
-</dependency>
+Install-Package Sarbacane-Sdk
 ```
-
-
-#### JAR
-
-[Download](https://oss.sonatype.org/service/local/repositories/releases/content/com/sarbacane/sarbacane-sdk/1.0.3/sarbacane-sdk-1.0.3.jar)
 
 
 #### Sources
 
 ```
-git clone https://github.com/sarbacane-sdk/java.git .
+git clone https://github.com/sarbacane-sdk/csharp.git .
 ```
 
 
