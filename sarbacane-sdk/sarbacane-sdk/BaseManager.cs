@@ -13,7 +13,6 @@ namespace sarbacane_sdk
     {
         public static String baseURL = "https://api.primotexto.com/v2";
 
-        //private static String TYPE = "text/html; charset=utf-8";
         protected static String smtpHost = "smtp.tipimail.com";
         protected static int smtpPort = 587;
 
@@ -90,14 +89,12 @@ namespace sarbacane_sdk
             var request = new RestRequest(Uri, Method.POST);
             String fileContent = readText(File);
             Console.WriteLine("FileContent: " + fileContent);
-            //request.AddFile("File", File, "application/json");
+            
             request.AddHeader("Content-type", "application/json");
             request.AddHeader("Accept", "application/json");
             request.AddParameter("application/json", fileContent, ParameterType.RequestBody);
             request.RequestFormat = DataFormat.Json;
             
-            
-            //Console.WriteLine("Data: " + Data);
             var response = client.Execute(request);
             return response;
 
@@ -133,11 +130,6 @@ namespace sarbacane_sdk
         {
             return args != null && args.Length > 0;
         }
-
-        //public static String readFile(String fileName)
-        //{
-        //    return System.IO.File.ReadAllText(@fileName);
-        //}
 
         public static String readText(String fileName)
         {

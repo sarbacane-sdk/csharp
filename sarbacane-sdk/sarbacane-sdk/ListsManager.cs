@@ -36,11 +36,9 @@ namespace sarbacane_sdk
             }
             else
             {
-                //String fileContent = BaseManager.readText(filePath);
                 Console.WriteLine("file: " + filePath);
                 var query = BaseManager.httpPostContent("/lists/" + listId + "/import", filePath);
                 RestSharp.Deserializers.JsonDeserializer deserial = new JsonDeserializer();
-                //String response = deserial.Deserialize<String>(query);
                 string locationUrl = (string)query.Headers.Where(h => h.Type == ParameterType.HttpHeader && h.Name == "Location").SingleOrDefault().Value;
                 return locationUrl;
             }
@@ -227,9 +225,6 @@ namespace sarbacane_sdk
             {
                 throw new SystemException("HTTP Code: " + query.StatusCode.ToString());
             }
-            //RestSharp.Deserializers.JsonDeserializer deserial = new JsonDeserializer();
-            //String response = deserial.Deserialize<String>(query);
-            //return response;
         }
 
         public static String getContacts(String listId)

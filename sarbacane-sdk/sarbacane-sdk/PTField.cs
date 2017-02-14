@@ -19,103 +19,53 @@ namespace sarbacane_sdk
    
     private Dictionary<String, Object> additionalProperties = new Dictionary<String, Object>();
 
-    /**
-     *
-     * @return
-     * The format
-     */
     
     public String getFormat() {
         return format;
     }
 
-    /**
-     *
-     * @param format
-     * The format
-     */
+
     
     public void setFormat(String format) {
         this.format = format;
     }
 
-    /**
-     *
-     * @return
-     * The id
-     */
-   
+      
     public String getId() {
         return id;
     }
 
-    /**
-     *
-     * @param id
-     * The id
-     */
-   
+      
     public void setId(String id) {
         this.id = id;
     }
 
    
-
-    /**
-     *
-     * @return
-     * The listId
-     */
    
     public String getListId() {
         return listId;
     }
 
-    /**
-     *
-     * @param listId
-     * The listId
-     */
    
     public void setListId(String listId) {
         this.listId = listId;
     }
 
-    /**
-     *
-     * @return
-     * The name
-     */
    
     public String getName() {
         return name;
     }
 
-    /**
-     *
-     * @param name
-     * The name
-     */
    
     public void setName(String name) {
         this.name = name;
     }
 
-    /**
-     *
-     * @return
-     * The type
-     */
    
     public String getType() {
         return type;
     }
 
-    /**
-     *
-     * @param type
-     * The type
-     */
    
     public void setType(String type) {
         this.type = type;

@@ -71,10 +71,7 @@ namespace sarbacane_sdk
         {
             return isSet(emailUser) && isSet(emailApikey);
         }
-
-        //private static boolean userIsLoggedIn() {
-        //    return (isSet(getSmsApikey()));
-        //}
+        
 
         public static void ensureEmailTokens()
         {
