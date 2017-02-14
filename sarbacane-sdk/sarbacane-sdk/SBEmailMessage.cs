@@ -12,7 +12,8 @@ namespace sarbacane_sdk
         private String mailFrom;
         private String mailFromName;
         private String subject;
-        private String message;
+        private String htmlBody;
+        private String textBody;
 
 
         private ArrayList recipients = new ArrayList();
@@ -63,14 +64,24 @@ namespace sarbacane_sdk
             this.subject = subject;
         }
 
-        public String getMessage()
+        public String getHtmlBody()
         {
-            return message;
+            return htmlBody;
         }
 
-        public void setMessage(String message)
+        public void setHtmlBody(String message)
         {
-            this.message = message;
+            this.htmlBody = message;
+        }
+
+        public String getTextBody()
+        {
+            return textBody;
+        }
+
+        public void setTextBody(String message)
+        {
+            this.textBody = message;
         }
     }
 }

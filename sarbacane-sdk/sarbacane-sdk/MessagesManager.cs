@@ -12,9 +12,9 @@ namespace sarbacane_sdk
         public static void sendEmailMessage(SBEmailMessage email)
         {
             AuthenticationManager.ensureEmailTokens();
-            if ((!isSet(email.getMailFrom())) || (!isSet(email.getMailFromName())) || (!isSet(email.getRecipients().ToString())) || !(isSet(email.getSubject())) || (!isSet(email.getMessage())))
+            if ((!isSet(email.getMailFrom())) || (!isSet(email.getMailFromName())) || (!isSet(email.getRecipients().ToString())) || !(isSet(email.getSubject())) || (!isSet(email.getTextBody())) || (!isSet(email.getHtmlBody())))
             {
-                throw new SystemException("Error: missing params. sendEmail(mailFrom, mailFromname, recipients, subject, message");
+                throw new SystemException("Error: mailFrom, mailFromname, recipients, subject, htmlBody and textBody are required.");
             }
             else
             {

@@ -4,6 +4,7 @@ using System;
 
 using System.IO;
 using System.Net.Mail;
+using System.Net.Mime;
 using System.Text;
 
 namespace sarbacane_sdk
@@ -29,7 +30,7 @@ namespace sarbacane_sdk
 
             MailMessage mm = new MailMessage();
             mm.From = new MailAddress(email.getMailFrom(), email.getMailFromName());
-            mm.Headers.Add("X-SARBACANE-SDK", "1.0.4.5");
+            mm.Headers.Add("X-Sarbacane-SDK-C#", "1.0.5");
             mm.Subject = (email.getSubject());
             mm.BodyEncoding = UTF8Encoding.UTF8;
             mm.DeliveryNotificationOptions = DeliveryNotificationOptions.OnFailure;
@@ -39,7 +40,10 @@ namespace sarbacane_sdk
                 mm.To.Add(new MailAddress(recipient));
             }
 
-            mm.Body = email.getMessage();
+            mm.Body = email.getTextBody();
+            ContentType mimeType = new System.Net.Mime.ContentType("text/html");
+            AlternateView alternate = AlternateView.CreateAlternateViewFromString(email.getHtmlBody(), mimeType);
+            mm.AlternateViews.Add(alternate);
 
             try
             {
