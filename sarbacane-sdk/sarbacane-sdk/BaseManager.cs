@@ -40,7 +40,7 @@ namespace sarbacane_sdk
             }
 
             mm.Body = email.getTextBody();
-            ContentType mimeType = new System.Net.Mime.ContentType("text/html");
+            ContentType mimeType = new System.Net.Mime.ContentType("text/html; charset=utf-8");
             AlternateView alternate = AlternateView.CreateAlternateViewFromString(email.getHtmlBody(), mimeType);
             mm.AlternateViews.Add(alternate);
 
