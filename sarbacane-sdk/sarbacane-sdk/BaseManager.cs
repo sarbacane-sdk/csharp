@@ -1,7 +1,7 @@
 ﻿
 using RestSharp;
 using System;
-
+using System.Configuration;
 using System.IO;
 using System.Net.Mail;
 using System.Net.Mime;
@@ -11,25 +11,42 @@ namespace sarbacane_sdk
 {
     public class BaseManager
     {
-        public static String baseURL = "https://api.primotexto.com/v2";
-
+        protected static String sdkVersion = "1.0.5";
+        protected static String smsUrl = "https://api.primotexto.com/v2";
         protected static String smtpHost = "smtp.tipimail.com";
         protected static int smtpPort = 587;
+        protected static int smtpConnectionTimeout = 60000;
+        protected static bool smtpStartTlsEnable = true;
+        protected static String smtpSdkHeader = "X-Sarbacane-SDK-C#";
+        protected static String smtpDefaultHtmlEncoding = "text/html; charset=utf-8";
+        protected static String smtpDefaultTextEncoding = "text/plain; charset=utf-8";
+
+        //protected static String sdkVersion = ConfigurationManager.AppSettings["version"];
+        //protected static String smsUrl = ConfigurationManager.AppSettings["smsUrl"];
+        //protected static String smtpHost = ConfigurationManager.AppSettings["smtpHost"];
+        //protected static int smtpPort = int.Parse(ConfigurationManager.AppSettings["smtpPort"]);
+        //protected static int smtpConnectionTimeout = int.Parse(ConfigurationManager.AppSettings["smtpConnectionTimeout"]);
+        //protected static String smtpStartTlsEnable = ConfigurationManager.AppSettings["smtpStartTlsEnable"];
+        //protected static String smtpAuthEnable = ConfigurationManager.AppSettings["smtpAuthEnable"];
+        //protected static String smtpDefaultHtmlEncoding = ConfigurationManager.AppSettings["smtpDefaultHtmlEncoding"];
+        //protected static String smtpDefaultTextEncoding = ConfigurationManager.AppSettings["smtpDefaultTextEncoding"];
+
+
 
         protected static void sendTransport(SBEmailMessage email)
         {
             SmtpClient client = new SmtpClient();
             client.Port = smtpPort;
             client.Host = smtpHost;
-            client.EnableSsl = true;
-            client.Timeout = 10000;
+            client.EnableSsl = smtpStartTlsEnable;
+            client.Timeout = smtpConnectionTimeout;
             client.DeliveryMethod = SmtpDeliveryMethod.Network;
             client.UseDefaultCredentials = false;
             client.Credentials = new System.Net.NetworkCredential(AuthenticationManager.getEmailUser(), AuthenticationManager.getEmailApikey());
 
             MailMessage mm = new MailMessage();
             mm.From = new MailAddress(email.getMailFrom(), email.getMailFromName());
-            mm.Headers.Add("X-Sarbacane-SDK-C#", "1.0.5");
+            mm.Headers.Add(smtpSdkHeader, sdkVersion);
             mm.Subject = (email.getSubject());
             mm.BodyEncoding = UTF8Encoding.UTF8;
             mm.DeliveryNotificationOptions = DeliveryNotificationOptions.OnFailure;
@@ -40,7 +57,7 @@ namespace sarbacane_sdk
             }
 
             mm.Body = email.getTextBody();
-            ContentType mimeType = new System.Net.Mime.ContentType("text/html; charset=utf-8");
+            ContentType mimeType = new ContentType(smtpDefaultHtmlEncoding);
             AlternateView alternate = AlternateView.CreateAlternateViewFromString(email.getHtmlBody(), mimeType);
             mm.AlternateViews.Add(alternate);
 
@@ -56,7 +73,7 @@ namespace sarbacane_sdk
 
         protected static IRestResponse httpGet(String Uri)
         {
-            var client = new RestClient(baseURL);
+            var client = new RestClient(smsUrl);
             client.AddDefaultHeader("X-Primotexto-ApiKey", AuthenticationManager.getSmsApikey());
             client.AddDefaultHeader("Content-type", "application/json");
             var request = new RestRequest(Uri, Method.GET);
@@ -68,7 +85,7 @@ namespace sarbacane_sdk
 
         protected static IRestResponse httpPost(String Uri, Object Data)
         {
-            var client = new RestClient(baseURL);
+            var client = new RestClient(smsUrl);
             client.AddDefaultHeader("X-Primotexto-ApiKey", AuthenticationManager.getSmsApikey());
             client.AddDefaultHeader("Content-type", "application/json");
             var request = new RestRequest(Uri, Method.POST);
@@ -82,7 +99,7 @@ namespace sarbacane_sdk
 
         protected static IRestResponse httpPostContent(String Uri, String File)
         {
-            var client = new RestClient(baseURL);
+            var client = new RestClient(smsUrl);
             client.AddDefaultHeader("X-Primotexto-ApiKey", AuthenticationManager.getSmsApikey());
             client.AddDefaultHeader("Content-type", "application/json");
             client.AddDefaultHeader("Accept", "application/json");
@@ -102,7 +119,7 @@ namespace sarbacane_sdk
 
         protected static IRestResponse httpPut(String Uri, Object Data)
         {
-            var client = new RestClient(baseURL);
+            var client = new RestClient(smsUrl);
             client.AddDefaultHeader("X-Primotexto-ApiKey", AuthenticationManager.getSmsApikey());
             client.AddDefaultHeader("Content-type", "application/json");
             var request = new RestRequest(Uri, Method.PUT);
@@ -116,7 +133,7 @@ namespace sarbacane_sdk
 
         protected static IRestResponse httpDelete(String Uri)
         {
-            var client = new RestClient(baseURL);
+            var client = new RestClient(smsUrl);
             client.AddDefaultHeader("X-Primotexto-ApiKey", AuthenticationManager.getSmsApikey());
             client.AddDefaultHeader("Content-type", "application/json");
             var request = new RestRequest(Uri, Method.DELETE);
