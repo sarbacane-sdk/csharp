@@ -1,4 +1,4 @@
-![alt tag](https://cloud.githubusercontent.com/assets/18444530/22825087/81a050e8-ef8b-11e6-8b33-2508b9be27a8.png)
+![alt tag](https://cloud.githubusercontent.com/assets/18444530/23370454/08b3a170-fd15-11e6-946c-ecc2db251ad7.png)
 ### Sarbacane SDK C# - Send e-mail and text messages (sms)
 
 

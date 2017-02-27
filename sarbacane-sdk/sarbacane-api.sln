@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "sarbacane-sdk40", "sarbacan
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "sarbacane-sdk45", "sarbacane-sdk45\sarbacane-sdk45.csproj", "{03F8260D-11F1-4941-8A76-A75614D3C044}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "sarbacane-sdk-access", "sarbacane-sdk-access\sarbacane-sdk-access.csproj", "{4218F32B-D721-4349-B1B1-81206340BE5D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug 3.5|Any CPU = Debug 3.5|Any CPU
@@ -69,6 +71,22 @@ Global
 		{03F8260D-11F1-4941-8A76-A75614D3C044}.Release 452|Any CPU.Build.0 = Release|Any CPU
 		{03F8260D-11F1-4941-8A76-A75614D3C044}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{03F8260D-11F1-4941-8A76-A75614D3C044}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4218F32B-D721-4349-B1B1-81206340BE5D}.Debug 3.5|Any CPU.ActiveCfg = Debug|Any CPU
+		{4218F32B-D721-4349-B1B1-81206340BE5D}.Debug 3.5|Any CPU.Build.0 = Debug|Any CPU
+		{4218F32B-D721-4349-B1B1-81206340BE5D}.Debug 45|Any CPU.ActiveCfg = Debug|Any CPU
+		{4218F32B-D721-4349-B1B1-81206340BE5D}.Debug 45|Any CPU.Build.0 = Debug|Any CPU
+		{4218F32B-D721-4349-B1B1-81206340BE5D}.Debug 452|Any CPU.ActiveCfg = Debug|Any CPU
+		{4218F32B-D721-4349-B1B1-81206340BE5D}.Debug 452|Any CPU.Build.0 = Debug|Any CPU
+		{4218F32B-D721-4349-B1B1-81206340BE5D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4218F32B-D721-4349-B1B1-81206340BE5D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4218F32B-D721-4349-B1B1-81206340BE5D}.Release 3.5|Any CPU.ActiveCfg = Release|Any CPU
+		{4218F32B-D721-4349-B1B1-81206340BE5D}.Release 3.5|Any CPU.Build.0 = Release|Any CPU
+		{4218F32B-D721-4349-B1B1-81206340BE5D}.Release 45|Any CPU.ActiveCfg = Release|Any CPU
+		{4218F32B-D721-4349-B1B1-81206340BE5D}.Release 45|Any CPU.Build.0 = Release|Any CPU
+		{4218F32B-D721-4349-B1B1-81206340BE5D}.Release 452|Any CPU.ActiveCfg = Release|Any CPU
+		{4218F32B-D721-4349-B1B1-81206340BE5D}.Release 452|Any CPU.Build.0 = Release|Any CPU
+		{4218F32B-D721-4349-B1B1-81206340BE5D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4218F32B-D721-4349-B1B1-81206340BE5D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
