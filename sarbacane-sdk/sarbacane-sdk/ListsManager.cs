@@ -18,7 +18,9 @@ namespace sarbacane_sdk
             }
             else
             {
-                var query = BaseManager.httpPost("/lists", listName);
+                PTList list = new PTList();
+                list.setName(listName);
+                var query = BaseManager.httpPost("/lists", list);
                 JsonDeserializer deserial = new JsonDeserializer();
                 String response = deserial.Deserialize<String>(query);
                 return response;

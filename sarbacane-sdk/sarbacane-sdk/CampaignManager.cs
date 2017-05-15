@@ -62,6 +62,31 @@ namespace sarbacane_sdk
             }
         }
 
+        public static String campaignInfo(String campaignId)
+        {
+            AuthenticationManager.ensureSmsTokens();
+            if (!isSet(campaignId))
+            {
+                throw new SystemException("Error: You need to specify the campaignId.\n");
+            }
+            else
+            {
+                var query = BaseManager.httpGet("/campaigns/" + campaignId );
+                RestSharp.Deserializers.JsonDeserializer deserial = new JsonDeserializer();
+                String response = deserial.Deserialize<String>(query);
+                return response;
+            }
+        }
+
+        public static String campaignsInfo()
+        {
+            AuthenticationManager.ensureSmsTokens();
+            var query = BaseManager.httpGet("/campaigns");
+            JsonDeserializer deserial = new JsonDeserializer();
+            String response = deserial.Deserialize<String>(query);
+            return response;
+        }
+
         public static String campaignStats(String campaignId)
         {
             AuthenticationManager.ensureSmsTokens();
@@ -72,6 +97,22 @@ namespace sarbacane_sdk
             else
             {
                 var query = BaseManager.httpGet("/campaigns/" + campaignId + "/status");
+                RestSharp.Deserializers.JsonDeserializer deserial = new JsonDeserializer();
+                String response = deserial.Deserialize<String>(query);
+                return response;
+            }
+        }
+
+        public static String campaignReplies(String campaignId)
+        {
+            AuthenticationManager.ensureSmsTokens();
+            if (!isSet(campaignId))
+            {
+                throw new SystemException("Error: You need to specify the campaignId.\n");
+            }
+            else
+            {
+                var query = BaseManager.httpGet("/campaigns/" + campaignId + "/replies");
                 RestSharp.Deserializers.JsonDeserializer deserial = new JsonDeserializer();
                 String response = deserial.Deserialize<String>(query);
                 return response;

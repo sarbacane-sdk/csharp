@@ -11,13 +11,14 @@ namespace sarbacane_sdk
 {
     public class BaseManager
     {
-        protected static String sdkVersion = "1.0.5";
+        protected static String version = "1.0.6";
         protected static String smsUrl = "https://api.primotexto.com/v2";
         protected static String smtpHost = "smtp.tipimail.com";
         protected static int smtpPort = 587;
         protected static int smtpConnectionTimeout = 60000;
         protected static bool smtpStartTlsEnable = true;
-        protected static String smtpSdkHeader = "X-Sarbacane-SDK-C#";
+        protected static String sdkHeader = "X-Sarbacane-SDK";
+        protected static String sdkVersion = "sarbacane-sdk-net " + version;
         protected static String smtpDefaultHtmlEncoding = "text/html; charset=utf-8";
         protected static String smtpDefaultTextEncoding = "text/plain; charset=utf-8";
 
@@ -46,7 +47,7 @@ namespace sarbacane_sdk
 
             MailMessage mm = new MailMessage();
             mm.From = new MailAddress(email.getMailFrom(), email.getMailFromName());
-            mm.Headers.Add(smtpSdkHeader, sdkVersion);
+            mm.Headers.Add(sdkHeader, sdkVersion);
             mm.Subject = (email.getSubject());
             mm.BodyEncoding = UTF8Encoding.UTF8;
             mm.DeliveryNotificationOptions = DeliveryNotificationOptions.OnFailure;
@@ -76,6 +77,7 @@ namespace sarbacane_sdk
             var client = new RestClient(smsUrl);
             client.AddDefaultHeader("X-Primotexto-ApiKey", AuthenticationManager.getSmsApikey());
             client.AddDefaultHeader("Content-type", "application/json");
+            client.AddDefaultHeader(sdkHeader, sdkVersion);
             var request = new RestRequest(Uri, Method.GET);
             request.RequestFormat = DataFormat.Json;
             var response = client.Execute(request);
@@ -88,6 +90,7 @@ namespace sarbacane_sdk
             var client = new RestClient(smsUrl);
             client.AddDefaultHeader("X-Primotexto-ApiKey", AuthenticationManager.getSmsApikey());
             client.AddDefaultHeader("Content-type", "application/json");
+            client.AddDefaultHeader(sdkHeader, sdkVersion);
             var request = new RestRequest(Uri, Method.POST);
             request.RequestFormat = DataFormat.Json;
             request.AddBody(Data);
@@ -103,6 +106,7 @@ namespace sarbacane_sdk
             client.AddDefaultHeader("X-Primotexto-ApiKey", AuthenticationManager.getSmsApikey());
             client.AddDefaultHeader("Content-type", "application/json");
             client.AddDefaultHeader("Accept", "application/json");
+            client.AddDefaultHeader(sdkHeader, sdkVersion);
             var request = new RestRequest(Uri, Method.POST);
             String fileContent = readText(File);
             Console.WriteLine("FileContent: " + fileContent);
@@ -122,6 +126,7 @@ namespace sarbacane_sdk
             var client = new RestClient(smsUrl);
             client.AddDefaultHeader("X-Primotexto-ApiKey", AuthenticationManager.getSmsApikey());
             client.AddDefaultHeader("Content-type", "application/json");
+            client.AddDefaultHeader(sdkHeader, sdkVersion);
             var request = new RestRequest(Uri, Method.PUT);
             request.RequestFormat = DataFormat.Json;
             request.AddBody(Data);
@@ -136,6 +141,7 @@ namespace sarbacane_sdk
             var client = new RestClient(smsUrl);
             client.AddDefaultHeader("X-Primotexto-ApiKey", AuthenticationManager.getSmsApikey());
             client.AddDefaultHeader("Content-type", "application/json");
+            client.AddDefaultHeader(sdkHeader, sdkVersion);
             var request = new RestRequest(Uri, Method.DELETE);
             request.RequestFormat = DataFormat.Json;
             var response = client.Execute(request);
