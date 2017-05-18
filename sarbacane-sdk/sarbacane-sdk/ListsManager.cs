@@ -3,23 +3,23 @@ using RestSharp.Deserializers;
 using RestSharp.Extensions.MonoHttp;
 using System;
 using System.Linq;
+using System.Web.Script.Serialization;
 
 
 namespace sarbacane_sdk
 {
     public class ListsManager : BaseManager
     {
-        public static String addList(String listName)
+        public static String addList(SBSmsList list)
         {
             AuthenticationManager.ensureSmsTokens();
-            if (!isSet(listName))
+            if (!isSet(list.getName()))
             {
                 throw new SystemException("Error: Please define the List Name.");
             }
             else
             {
-                PTList list = new PTList();
-                list.setName(listName);
+                
                 var query = BaseManager.httpPost("/lists", list);
                 JsonDeserializer deserial = new JsonDeserializer();
                 String response = deserial.Deserialize<String>(query);

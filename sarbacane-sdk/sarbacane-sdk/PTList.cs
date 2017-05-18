@@ -6,10 +6,32 @@ namespace sarbacane_sdk
 {
     public class PTList : ListsManager
     {
-        [ScriptIgnore]
-        private String id;
         private String name;
-        private List<PTField> fields = new List<PTField>();
+
+        public String getName()
+        {
+            return name;
+        }
+
+        public void setName(String name)
+        {
+            this.name = name;
+        }
+
+        public PTList(String name)
+        {
+            this.name = name;
+        }
+
+        public PTList() { }
+
+        /**
+        //[ScriptIgnore]
+        //private String id;
+
+        
+        //[ScriptIgnore]
+        //private List<PTField> fields = new List<PTField>();
 
 
         public List<PTField> getFields()
@@ -22,6 +44,14 @@ namespace sarbacane_sdk
             this.fields = fields;
         }
 
+        public PTList(String name)
+        {
+            this.name = name;
+        }
+
+        public PTList() { }
+
+
         public String getId()
         {
             return id;
@@ -32,15 +62,7 @@ namespace sarbacane_sdk
             this.id = id;
         }
 
-        public String getName()
-        {
-            return name;
-        }
 
-        public void setName(String name)
-        {
-            this.name = name;
-        }
-
+    **/
     }
 }

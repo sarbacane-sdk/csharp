@@ -118,5 +118,21 @@ namespace sarbacane_sdk
                 return response;
             }
         }
+
+        public static String campaignBlacklists(String campaignId)
+        {
+            AuthenticationManager.ensureSmsTokens();
+            if (!isSet(campaignId))
+            {
+                throw new SystemException("Error: You need to specify the campaignId.\n");
+            }
+            else
+            {
+                var query = BaseManager.httpGet("/campaigns/" + campaignId + "/blacklists");
+                RestSharp.Deserializers.JsonDeserializer deserial = new JsonDeserializer();
+                String response = deserial.Deserialize<String>(query);
+                return response;
+            }
+        }
     }
 }
