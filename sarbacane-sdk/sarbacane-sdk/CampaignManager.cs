@@ -6,30 +6,45 @@ namespace sarbacane_sdk
 {
     public class CampaignManager : BaseManager
     {
-        public static String campaignCreate(PTCampaign campaign)
+        public static SBSmsCampaignCreationResult CampaignMarketingCreate(SBSmsCampaign campaign)
         {
             AuthenticationManager.ensureSmsTokens();
-            if (!isSet(campaign.getSubtype()) || (!"notification".Equals(campaign.getSubtype())) && (!"marketing".Equals(campaign.getSubtype())))
-            {
-                throw new SystemException("Error: Campaign not created - You need to specify a type: notification OR marketing.\n");
-            }
-            else if (!isSet(campaign.getName()) || (!isSet(campaign.getMessage())) || (!isSet(campaign.getSendList())))
+            if (!isSet(campaign.name) || (!isSet(campaign.message))) //|| (!isSet(campaign.sendList.id)))
             {
                 throw new SystemException("Error: Campaign MUST have at least name, message and sendList properties.\n");
             }
             else
             {
-                if (!isSet(campaign.getType()))
+                if (!isSet(campaign.type))
                 {
-                    campaign.setType("STANDARD");
+                    campaign.type = "STANDARD";
                 }
-                var query = BaseManager.httpPost("/" + campaign.getSubtype() + "/campaigns", campaign);
+                var query = BaseManager.httpPost("/marketing/campaigns", campaign);
                 RestSharp.Deserializers.JsonDeserializer deserial = new JsonDeserializer();
-                String response = deserial.Deserialize<String>(query);
+                SBSmsCampaignCreationResult response = deserial.Deserialize<SBSmsCampaignCreationResult>(query);
                 return response;
             }
         }
 
+        public static SBSmsCampaignCreationResult CampaignNotificationCreate(SBSmsCampaign campaign)
+        {
+            AuthenticationManager.ensureSmsTokens();
+            if (!isSet(campaign.name) || (!isSet(campaign.message))) //|| (!isSet(campaign.sendList.id)))
+            {
+                throw new SystemException("Error: Campaign MUST have at least name, message and sendList properties.\n");
+            }
+            else
+            {
+                if (!isSet(campaign.type))
+                {
+                    campaign.type = "STANDARD";
+                }
+                var query = BaseManager.httpPost("/notification/campaigns", campaign);
+                RestSharp.Deserializers.JsonDeserializer deserial = new JsonDeserializer();
+                SBSmsCampaignCreationResult response = deserial.Deserialize<SBSmsCampaignCreationResult>(query);
+                return response;
+            }
+        }
         public static String campaignTest(PTCampaignTest campaignTest)
         {
             AuthenticationManager.ensureSmsTokens();

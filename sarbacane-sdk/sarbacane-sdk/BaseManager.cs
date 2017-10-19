@@ -93,8 +93,9 @@ namespace sarbacane_sdk
             client.AddDefaultHeader(sdkHeader, sdkVersion);
             var request = new RestRequest(Uri, Method.POST);
             request.RequestFormat = DataFormat.Json;
-            request.AddBody(Data);
-            request.AddBody(request.JsonSerializer.Serialize(Data));
+            request.AddJsonBody(Data);
+            //request.AddBody(Data);
+            //request.AddBody(request.JsonSerializer.Serialize(Data));
             var response = client.Execute(request);
             return response;
 
