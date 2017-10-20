@@ -71,9 +71,9 @@ namespace sarbacane_sdk
                 throw new SystemException("Error: Please define identifier OR id blacklist");
             }
             var query = BaseManager.httpDelete(blacklist.url);
-            RestSharp.Deserializers.JsonDeserializer deserial = new JsonDeserializer();
-            String response = deserial.Deserialize<String>(query);
-            return response;
+            //RestSharp.Deserializers.JsonDeserializer deserial = new JsonDeserializer();
+            //String response = deserial.Deserialize<String>(query);
+            return query.ToString();
         }
 
     }
